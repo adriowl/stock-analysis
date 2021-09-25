@@ -24,9 +24,11 @@ The execution times between the original script and the refactored script are as
 
 ##### Explanation of Code Changes
 This increase in performance time can be largely attributed to the fact that in the new code, we are looping through the data far less times than in our original. In the original green_stocks code, we are looping through rows 11 times! 11 multiplied by the rowcount is quite a big number, especially when you consider the size of the average dataset, which could be millions of rows. See original nested loops below:
+
 <img width="255" alt="greenstocks_originalcode" src="https://user-images.githubusercontent.com/90166034/134776621-4035c7b4-cf13-4a21-8dbc-961d5893d8cf.png">
 
 In our improved code, we get rid of the nested loops. We loop 11 times once, to initialize the tickerVolumes array values to 0, then loop over the rowCount once, checking for the tickers that we want as we go, which is much better for performance. Compared to looping over rowCount 11 times, this is a huge improvement! See improved loops below:
+
 <img width="501" alt="vbachallenge_improvedcode" src="https://user-images.githubusercontent.com/90166034/134776626-ceeef344-0cf9-4961-91a4-1e1201d29911.png">
 
 As a developer we want to always be vigilant of how our code runs. Primarily we do want it to work, yes, but if that code works but takes a whole day to run, then it's not very useful, is it? Especially in this example, since we're sending our script to a non-coder.

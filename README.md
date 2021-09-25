@@ -9,19 +9,23 @@ Comparing 2017 and 2018 data, the year 2017 performed much, much better for our 
 The execution times between the original script and the refactored script are as follows:
 
 #### Original
-- 2017:<img width="262" alt="Original_2017" src="https://user-images.githubusercontent.com/90166034/134776281-ed8c6d54-1fc4-406b-8525-28326d810d08.png">
+- 2017
+<img width="262" alt="Original_2017" src="https://user-images.githubusercontent.com/90166034/134776281-ed8c6d54-1fc4-406b-8525-28326d810d08.png">
 
-- 2018:<img width="262" alt="Original_2018" src="https://user-images.githubusercontent.com/90166034/134776285-5546922f-689b-4821-9c32-caabdbfa1658.png">
+- 2018
+<img width="262" alt="Original_2018" src="https://user-images.githubusercontent.com/90166034/134776285-5546922f-689b-4821-9c32-caabdbfa1658.png">
 
 #### Refactored:
-- 2017:<img width="263" alt="VBA_Challenge_2017" src="https://user-images.githubusercontent.com/90166034/134776290-cacce0aa-92eb-428f-a02a-72d87682cabe.png">
+- 2017
+<img width="263" alt="VBA_Challenge_2017" src="https://user-images.githubusercontent.com/90166034/134776290-cacce0aa-92eb-428f-a02a-72d87682cabe.png">
 
-- 2018:<img width="264" alt="VBA_Challenge_2018" src="https://user-images.githubusercontent.com/90166034/134776296-132e3b0f-07cb-4dc3-b9bb-16ba326dc9ae.png">
+- 2018
+<img width="264" alt="VBA_Challenge_2018" src="https://user-images.githubusercontent.com/90166034/134776296-132e3b0f-07cb-4dc3-b9bb-16ba326dc9ae.png">
 
+##### Explanation of Code Changes
 This increase in performance time can be largely attributed to the fact that in the new code, we are looping through the data far less times than in our original. In the original green_stocks code, we are looping through rows 11 times! 11 multiplied by the rowcount is quite a big number, especially when you consider the size of the average dataset, which could be millions of rows. See original nested loops below:
 <img width="255" alt="greenstocks_originalcode" src="https://user-images.githubusercontent.com/90166034/134776621-4035c7b4-cf13-4a21-8dbc-961d5893d8cf.png">
 
-##### Explanation of Code Changes
 In our improved code, we get rid of the nested loops. We loop 11 times once, to initialize the tickerVolumes array values to 0, then loop over the rowCount once, checking for the tickers that we want as we go, which is much better for performance. Compared to looping over rowCount 11 times, this is a huge improvement! See improved loops below:
 <img width="501" alt="vbachallenge_improvedcode" src="https://user-images.githubusercontent.com/90166034/134776626-ceeef344-0cf9-4961-91a4-1e1201d29911.png">
 
